@@ -5,6 +5,8 @@ using TMPro;
 
 public class DialogueController : MonoBehaviour
 {
+    [SerializeField] private GameObject _dialoguePanel;
+
     [SerializeField] private DialogueView _dialogueView;
 
     [SerializeField] private DialogueData _dialogue01;
@@ -13,6 +15,11 @@ public class DialogueController : MonoBehaviour
     private Queue<string> _sentences;
 
     DialogueView _letterType;
+
+    private void Start()
+    {
+        _dialoguePanel.SetActive(false);
+    }
 
     private void Update()
     {
@@ -26,6 +33,7 @@ public class DialogueController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            _dialoguePanel.SetActive(true);
             _dialogueView.Display(_dialogue01);
         }
     }
