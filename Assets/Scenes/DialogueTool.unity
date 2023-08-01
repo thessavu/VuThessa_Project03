@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79021b201ae86bc46a6f1510fde2f9a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueText: {fileID: 0}
-  _characterNameText: {fileID: 0}
+  _dialogueText: {fileID: 1889395225}
+  _characterNameText: {fileID: 1422903236}
   _characterSprite: {fileID: 0}
 --- !u!1 &479625118
 GameObject:
@@ -1181,8 +1181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fd924098c4b184f8498c6ccaa35331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogueView: {fileID: 0}
-  _dialogue01: {fileID: 0}
+  _dialogueView: {fileID: 432759812}
+  _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
 --- !u!4 &1662092678
 Transform:
   m_ObjectHideFlags: 0
