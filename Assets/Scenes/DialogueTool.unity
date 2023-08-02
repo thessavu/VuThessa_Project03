@@ -361,8 +361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogueText: {fileID: 1889395225}
+  _dialogueData: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
   _characterNameText: {fileID: 1422903236}
   _characterSprite: {fileID: 1758891927}
+  typeSpeed: 20
+  duration: 1
 --- !u!1 &479625118
 GameObject:
   m_ObjectHideFlags: 0

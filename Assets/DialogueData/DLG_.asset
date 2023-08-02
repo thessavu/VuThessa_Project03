@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0421cdb08035ba4b804829258e3fd1e, type: 3}
   m_Name: DLG_
   m_EditorClassIdentifier: 
-  _dialogue: hi there.
-  _characterName: Albedo
-  _portrait: {fileID: 21300000, guid: 940bbe96b09ee3c4f9c5e723f234d3a3, type: 3}
+  _dialogue:
+  - what in the world
+  - what is up with you these days man
+  _characterName: Hi
+  _portrait: {fileID: 21300000, guid: a7485e3ce9fc8f641ae20c6a26558693, type: 3}
+  _screenShake: 1

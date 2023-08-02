@@ -9,10 +9,11 @@ public class DialogueController : MonoBehaviour
 
     [SerializeField] private DialogueView _dialogueView;
 
+   // DialogueData _dialogueData;
+
     [SerializeField] private DialogueData _dialogue01;
     //02
     //03
-    private Queue<string> _sentences;
 
     DialogueView _letterType;
 
@@ -24,37 +25,38 @@ public class DialogueController : MonoBehaviour
     private void Update()
     {
         //starts the dialogue
-        StartDialogue();
-        
-    }
-
-    
-    public void StartDialogue()
-    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _dialoguePanel.SetActive(true);
-            _dialogueView.Display(_dialogue01);
+            _dialogueView.StartDialogue();
+        }
+
+        if (_dialogue01._screenShake == true)
+        {
+            TextShake();
         }
     }
 
     public void DisplayNextSentence()
     {
-        if(_sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
-
-        //StopAllCoroutines();
-       // StartCoroutine(_letterType.TypeSentence(_sentences));
+        //
     }
 
+    
    
 
     void EndDialogue()
     {
         //run animator
     }
-    
+
+    private void TextShake()
+    {
+
+        //Screen shake code here
+        _dialogueView.ScreenShake();
+       
+    }
+
+
 }
