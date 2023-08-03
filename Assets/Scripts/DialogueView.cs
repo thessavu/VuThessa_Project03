@@ -6,102 +6,52 @@ using UnityEngine.UI;
 
 public class DialogueView : MonoBehaviour
 {
-     [SerializeField] public TextMeshProUGUI _dialogueText;
+    [Header("Panel Inputs")]
+    [SerializeField] public TextMeshProUGUI _dialogueText;
+    [SerializeField] public TextMeshProUGUI _characterNameText;
+    [SerializeField] public Image _characterSprite;
+    
+    [Header("Emotion Sprites")]
+    [SerializeField] public Sprite _characterSpriteNormal;
+    [SerializeField] public Sprite _characterSpriteHappy;
+    [SerializeField] public Sprite _characterSpriteMad;
+    [SerializeField] public Sprite _characterSpriteSad;
+    [SerializeField] public Sprite _characterSpriteScared;
+    
+    // public EmotionType _emotionType;
+   // EmotionType _emotionType;
+   [Header("DialogueSO")]
+    [SerializeField] private DialogueData _dialogue01;
 
-    [SerializeField] DialogueData _dialogueData;
-   // [SerializeField] public TextMeshProUGUI textComponent;
-   // [SerializeField] private string[] _dialogueText;
-
-    [SerializeField] private TextMeshProUGUI _characterNameText;
-    [SerializeField] private Image _characterSprite;
-
-    [SerializeField] private float typeSpeed = 20;
-
-    public float duration = 1f;
-
-    /*
-
-    void NextLine()
+    public void Display(DialogueData data)
     {
-        if(index < _dialogueText.length - 1)
-        {
-            index++;
-            textComponent.text = string.Empty;
-            StartCoroutine(TypeLine());
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
-    /// 
-   
-    */
-
-    public void StartDialogue()
-    {
-       
-       // StartCoroutine(TypeLine());
-        StartCoroutine(DisplayDialogue());
-      //  StopAllCoroutines();
+         _dialogueText.text = data.Dialogue;
+        _characterNameText.text = data.CharacterName;
         
-    }
-
-    public void ScreenShake()
-    {
-
-        //Screen shake code here
-        StartCoroutine(Shaking());
-
-    }
-
-    IEnumerator DisplayDialogue()
-    {
-        _characterNameText.text = _dialogueData.CharacterName;
-        _characterSprite.sprite = _dialogueData.Portrait;
-
-        for (int i = 0; i < _dialogueData.Dialogue.Count; i++)
+        if ( _dialogue01._emotion == EmotionType.Normal)
         {
-            //display dialogue and types out letter by letter
-            StartCoroutine(TypeDialogue(_dialogueData.Dialogue[i]));
-
-            yield return new WaitForSeconds(2f);
-
+            Debug.Log("normal face is being displayed");
+            _characterSprite.sprite = _characterSpriteNormal;
+        }
+        else if (_dialogue01._emotion == EmotionType.Happy)
+        {
+            Debug.Log("happy face is being displayed");
+            _characterSprite.sprite = _characterSpriteHappy;
+        }
+        else if (_dialogue01._emotion == EmotionType.Mad)
+        {
+            Debug.Log("Angry face is being displayed");
+            _characterSprite.sprite = _characterSpriteMad;
+        }
+        else if (_dialogue01._emotion == EmotionType.Sad)
+        {
+            Debug.Log("sad face is being displayed");
+            _characterSprite.sprite = _characterSpriteSad;
+        }
+        else if (_dialogue01._emotion == EmotionType.Scared)
+        {
+            Debug.Log("scared face is being displayed");
+            _characterSprite.sprite = _characterSpriteScared;
         }
     }
-
-    private IEnumerator TypeDialogue(string p)
-    {
-        float elapsedTime = 0f;
-
-        int charIndex = 0;
-        charIndex = Mathf.Clamp(charIndex, 0, p.Length);
-
-        while(charIndex < p.Length)
-        {
-            elapsedTime += Time.deltaTime * typeSpeed;
-            charIndex = Mathf.FloorToInt(elapsedTime);
-
-            _dialogueText.text = p.Substring(0, charIndex);
-
-            yield return null;
-        }
-        _dialogueText.text = p;
-    }
-
-    public IEnumerator Shaking()
-    {
-        Vector3 startPosition = _dialogueText.transform.position;
-        float elapsedTime = 0f;
-
-        while(elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            _dialogueText.transform.position = startPosition + Random.insideUnitSphere;
-            yield return null;
-        }
-        _dialogueText.transform.position = startPosition;
-    }
-
 }

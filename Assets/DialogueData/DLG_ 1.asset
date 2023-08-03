@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0421cdb08035ba4b804829258e3fd1e, type: 3}
-  m_Name: DLG_
+  m_Name: DLG_ 1
   m_EditorClassIdentifier: 
-  _dialogue: What is up dude.
-  _characterName: Hi
-  _screenShake: 1
-  _emotion: 1
+  _dialogue:
+  - Nothing much.
+  - Can I eat that by the way?
+  _characterName: The other Guy
+  _portrait: {fileID: 21300000, guid: a7485e3ce9fc8f641ae20c6a26558693, type: 3}
+  _screenShake: 0
+  _emotion: 0

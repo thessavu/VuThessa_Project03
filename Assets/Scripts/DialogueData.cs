@@ -9,17 +9,24 @@ public class DialogueData : ScriptableObject
 
 
     [Multiline]
-    // [SerializeField] private string _dialogue = "...";
-    [SerializeField] List<string> _dialogue = new List<string>();
+     [SerializeField] private string _dialogue = "...";
+    //[SerializeField] List<string> _dialogue = new List<string>();
 
     [SerializeField] private string _characterName = "...";
-    [SerializeField] private Sprite _portrait = null;
+   // [SerializeField] 
+    private Sprite _portrait = null;
+    
 
     [SerializeField] public bool _screenShake;
 
+    [SerializeField] public EmotionType _emotion = EmotionType.Normal;
 
-    public List<string> Dialogue => _dialogue;
+
+    //public List<string> Dialogue => _dialogue;
+    public string Dialogue => _dialogue;
     public string CharacterName => _characterName;
     public Sprite Portrait => _portrait;
 
+    public EmotionType Emotion => _emotion;
+  
 }

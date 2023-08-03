@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &432759808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,11 +361,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogueText: {fileID: 1889395225}
-  _dialogueData: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
   _characterNameText: {fileID: 1422903236}
   _characterSprite: {fileID: 1758891927}
-  typeSpeed: 20
-  duration: 1
+  _characterSpriteNormal: {fileID: 21300000, guid: 0c3c6280eec531a4ba318d93c995d908, type: 3}
+  _characterSpriteHappy: {fileID: 21300000, guid: 2699099514b71aa4eade5ad163deddf3, type: 3}
+  _characterSpriteMad: {fileID: 21300000, guid: a39d984c951893e4e8709d9a923c2ea4, type: 3}
+  _characterSpriteSad: {fileID: 21300000, guid: 55dab1def1287164d81afd6b4e70a3bb, type: 3}
+  _characterSpriteScared: {fileID: 21300000, guid: 29225fb91386e9c40bc313414c741fd0, type: 3}
+  _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
 --- !u!1 &479625118
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +596,7 @@ GameObject:
   - component: {fileID: 937096854}
   - component: {fileID: 937096856}
   - component: {fileID: 937096855}
+  - component: {fileID: 937096857}
   m_Layer: 5
   m_Name: Dialogue_pnl
   m_TagString: Untagged
@@ -632,7 +636,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937096853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -663,6 +667,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937096853}
   m_CullTransparentMesh: 1
+--- !u!95 &937096857
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937096853}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 20af888e4cf58834db6dd03388f17c66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &937416864
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,7 +1188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1662092678}
-  - component: {fileID: 1662092677}
+  - component: {fileID: 1662092679}
   m_Layer: 0
   m_Name: DialogueController
   m_TagString: Untagged
@@ -1172,21 +1196,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1662092677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662092676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54fd924098c4b184f8498c6ccaa35331, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialoguePanel: {fileID: 432759807}
-  _dialogueView: {fileID: 432759812}
-  _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
 --- !u!4 &1662092678
 Transform:
   m_ObjectHideFlags: 0
@@ -1202,6 +1211,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1662092679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662092676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3769d37cc68b654ca08e9796441f982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogueView: {fileID: 432759812}
+  _dialoguePanel: {fileID: 937096853}
+  _animator: {fileID: 937096857}
+  _typeSpeed: 20
+  _dialogueDuration: 1
+  _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
 --- !u!1 &1758891925
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,54 +9,16 @@ public class DialogueController : MonoBehaviour
 
     [SerializeField] private DialogueView _dialogueView;
 
-   // DialogueData _dialogueData;
+    public Animator _animator;
 
-    [SerializeField] private DialogueData _dialogue01;
+  //  [SerializeField] private DialogueData _dialogue01;
     //02
     //03
 
+    [SerializeField] List<DialogueData> _dialogue = new List<DialogueData>();
+
     DialogueView _letterType;
 
-    private void Start()
-    {
-        _dialoguePanel.SetActive(false);
-    }
-
-    private void Update()
-    {
-        //starts the dialogue
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _dialoguePanel.SetActive(true);
-            _dialogueView.StartDialogue();
-        }
-
-        if (_dialogue01._screenShake == true)
-        {
-            TextShake();
-        }
-    }
-
-    public void DisplayNextSentence()
-    {
-        //
-    }
-
-    
-   
-
-    void EndDialogue()
-    {
-        //run animator
-    }
-
-    private void TextShake()
-    {
-
-        //Screen shake code here
-        _dialogueView.ScreenShake();
-       
-    }
-
+ 
 
 }
