@@ -27,21 +27,21 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        _elapsedTime += Time.deltaTime;
         _dialoguePanel.SetActive(false);
     }
 
     private void Update()
     {
+        _elapsedTime += Time.deltaTime;
         //starts the dialogue
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _elapsedTime < _dialogueDuration)
         {
             _dialoguePanel.SetActive(true);
             _animator.SetBool("IsOpen", true);
 
             StartDialogue();
         }
-        else if (Input.GetKeyDown(KeyCode.G))
+        else if (Input.GetKeyDown(KeyCode.Space) && _elapsedTime > _dialogueDuration)
         {
             StartDialogue02();
         }

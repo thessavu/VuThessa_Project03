@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DLG_01
   m_EditorClassIdentifier: 
   _characterName: Man
+  _portrait: {fileID: 21300000, guid: a39d984c951893e4e8709d9a923c2ea4, type: 3}
   _dialogue: "What is up dude. What have you been up to?\n I haven't seen you in
     a while."
   _dialogueAudio: {fileID: 7067461706949851981, guid: 5a04811e38add354d85eff99843eb5f0, type: 3}
-  _screenShake: 1
-  _emotion: 1
+  _screenShake: 0
+  _emotion: 2
