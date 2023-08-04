@@ -16,16 +16,18 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Dialogue Parameters")]
     [SerializeField] private float _typeSpeed = 20;
-    [SerializeField] public float _dialogueDuration = 1f;
+    [SerializeField] public float _dialogueDuration = 10f;
+    [SerializeField] private float _elapsedTime = 0f;
 
     [Header("DialogueSO")]
     [SerializeField] private DialogueData _dialogue01;
-    //02
-    //03
+    //[SerializeField] private DialogueData _dialogueXX;
+    //[SerializeField] private DialogueData _dialogueXX;
 
 
     private void Start()
     {
+        _elapsedTime += Time.deltaTime;
         _dialoguePanel.SetActive(false);
     }
 
@@ -38,14 +40,20 @@ public class DialogueManager : MonoBehaviour
             _animator.SetBool("IsOpen", true);
 
             StartDialogue();
-
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EndDialogue();
+        }
+        
     }
 
-        public void StartDialogue()
+    public void StartDialogue()
     {
         _dialogueView.Display(_dialogue01);
-        StartCoroutine(DisplayDialogue());
+        //test
+        //StartCoroutine(TypeDialogue(_dialogue01.Dialogue));
+         StartCoroutine(DisplayDialogue());
     }
 
     public void TextShake()
@@ -53,18 +61,19 @@ public class DialogueManager : MonoBehaviour
         //Screen shake code here
         StartCoroutine(Shaking());
     }
-    
+
+    public void EndDialogue()
+    {
+        Debug.Log("End of Dialogue");
+        StopAllCoroutines();
+        _animator.SetBool("IsOpen", false);
+    }
 
     IEnumerator DisplayDialogue()
     {
         StartCoroutine(TypeDialogue(_dialogue01.Dialogue));
 
-        if (_dialogue01._screenShake == true)
-        {
-            TextShake();
-        }
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
 
     }
 
@@ -75,15 +84,30 @@ public class DialogueManager : MonoBehaviour
         int charIndex = 0;
         charIndex = Mathf.Clamp(charIndex, 0, p.Length);
 
+        if (_dialogue01._screenShake == true)
+        {
+            TextShake();
+        }
+
+        //Audio Player
+        if (_dialogue01.DialogueAudio != null)
+        {
+            AudioSource newSound = Instantiate(_dialogue01.DialogueAudio, transform.position, Quaternion.identity);
+            Destroy(newSound.gameObject, newSound.clip.length);
+        }
+
+
         while (charIndex < p.Length)
         {
             elapsedTime += Time.deltaTime * _typeSpeed;
             charIndex = Mathf.FloorToInt(elapsedTime);
 
             _dialogueView._dialogueText.text = p.Substring(0, charIndex);
-
+            
             yield return null;
         }
+       
+
         _dialogueView._dialogueText.text = p;
 
     }
@@ -91,15 +115,16 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator Shaking()
     {
         Vector3 startPosition = _dialogueView._dialogueText.transform.position;
-        float elapsedTime = 0f;
+        //float elapsedTime = 0f;
 
-        while (elapsedTime < _dialogueDuration)
+        while (_elapsedTime < _dialogueDuration)
         {
-            elapsedTime += Time.deltaTime;
+            //_elapsedTime += Time.deltaTime;
             _dialogueView._dialogueText.transform.position = startPosition + Random.insideUnitSphere;
             yield return null;
         }
         _dialogueView._dialogueText.transform.position = startPosition;
     }
 
+    
 }

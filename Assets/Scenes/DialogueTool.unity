@@ -452,7 +452,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 479625121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1662092679}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &479625121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,7 +1239,8 @@ MonoBehaviour:
   _dialoguePanel: {fileID: 937096853}
   _animator: {fileID: 937096857}
   _typeSpeed: 20
-  _dialogueDuration: 1
+  _dialogueDuration: 3
+  _elapsedTime: 0
   _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
 --- !u!1 &1758891925
 GameObject:
