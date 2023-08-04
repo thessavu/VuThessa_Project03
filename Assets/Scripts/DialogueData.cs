@@ -8,7 +8,7 @@ public class DialogueData : ScriptableObject
     //dialogue data here
     [Header("Character Info")]
     [SerializeField] private string _characterName = "...";
-    private Sprite _portrait = null;
+    public Sprite _portrait = null;
     [Multiline]
     [SerializeField] private string _dialogue = "...";
     [SerializeField] private AudioSource _dialogueAudio;

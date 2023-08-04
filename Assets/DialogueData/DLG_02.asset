@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0421cdb08035ba4b804829258e3fd1e, type: 3}
-  m_Name: DLG_ 1
+  m_Name: DLG_02
   m_EditorClassIdentifier: 
-  _dialogue:
-  - Nothing much.
-  - Can I eat that by the way?
-  _characterName: The other Guy
-  _portrait: {fileID: 21300000, guid: a7485e3ce9fc8f641ae20c6a26558693, type: 3}
+  _characterName: Man 2
+  _dialogue: 'Didn''t we see each other yesterday though?
+
+    What are you talking
+    about?'
+  _dialogueAudio: {fileID: 7067461706949851981, guid: 5a04811e38add354d85eff99843eb5f0, type: 3}
   _screenShake: 0
   _emotion: 0

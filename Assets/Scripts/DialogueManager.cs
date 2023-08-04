@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("DialogueSO")]
     [SerializeField] private DialogueData _dialogue01;
-    //[SerializeField] private DialogueData _dialogueXX;
+    [SerializeField] private DialogueData _dialogue02;
     //[SerializeField] private DialogueData _dialogueXX;
 
 
@@ -41,19 +41,18 @@ public class DialogueManager : MonoBehaviour
 
             StartDialogue();
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.G))
         {
-            EndDialogue();
+            StartDialogue02();
         }
-        
+
     }
 
+    //DIALOGUE01 STARTS HERE
     public void StartDialogue()
     {
         _dialogueView.Display(_dialogue01);
-        //test
-        //StartCoroutine(TypeDialogue(_dialogue01.Dialogue));
-         StartCoroutine(DisplayDialogue());
+        StartCoroutine(DisplayDialogue());
     }
 
     public void TextShake()
@@ -72,7 +71,6 @@ public class DialogueManager : MonoBehaviour
     IEnumerator DisplayDialogue()
     {
         StartCoroutine(TypeDialogue(_dialogue01.Dialogue));
-
         yield return new WaitForSeconds(10f);
 
     }
@@ -84,6 +82,7 @@ public class DialogueManager : MonoBehaviour
         int charIndex = 0;
         charIndex = Mathf.Clamp(charIndex, 0, p.Length);
 
+        //dialogue01
         if (_dialogue01._screenShake == true)
         {
             TextShake();
@@ -103,10 +102,9 @@ public class DialogueManager : MonoBehaviour
             charIndex = Mathf.FloorToInt(elapsedTime);
 
             _dialogueView._dialogueText.text = p.Substring(0, charIndex);
-            
+
             yield return null;
         }
-       
 
         _dialogueView._dialogueText.text = p;
 
@@ -126,5 +124,52 @@ public class DialogueManager : MonoBehaviour
         _dialogueView._dialogueText.transform.position = startPosition;
     }
 
-    
+    //DIALOGUE02 STARTS HERE
+
+    //dialogue02
+    public void StartDialogue02()
+    {
+        _dialogueView.Display(_dialogue02);
+        StartCoroutine(DisplayDialogue02());
+    }
+
+    IEnumerator DisplayDialogue02()
+    {
+
+        StartCoroutine(TypeDialogue02(_dialogue02.Dialogue));
+        yield return new WaitForSeconds(10f);
+
+    }
+
+    private IEnumerator TypeDialogue02(string p)
+    {
+        float elapsedTime = 0f;
+
+        int charIndex = 0;
+        charIndex = Mathf.Clamp(charIndex, 0, p.Length);
+        if (_dialogue02._screenShake == true)
+        {
+            TextShake();
+        }
+
+        if (_dialogue02.DialogueAudio != null)
+        {
+            AudioSource newSound = Instantiate(_dialogue02.DialogueAudio, transform.position, Quaternion.identity);
+            Destroy(newSound.gameObject, newSound.clip.length);
+        }
+
+        while (charIndex < p.Length)
+        {
+            elapsedTime += Time.deltaTime * _typeSpeed;
+            charIndex = Mathf.FloorToInt(elapsedTime);
+
+            _dialogueView._dialogueText.text = p.Substring(0, charIndex);
+
+            yield return null;
+        }
+
+        _dialogueView._dialogueText.text = p;
+    }
+
+
 }

@@ -369,6 +369,7 @@ MonoBehaviour:
   _characterSpriteSad: {fileID: 21300000, guid: 55dab1def1287164d81afd6b4e70a3bb, type: 3}
   _characterSpriteScared: {fileID: 21300000, guid: 29225fb91386e9c40bc313414c741fd0, type: 3}
   _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
+  _dialogue02: {fileID: 11400000, guid: 5be8bd65a96742547a68061d0cf05433, type: 2}
 --- !u!1 &479625118
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +456,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1662092679}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: StartDialogue
+        m_MethodName: EndDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1242,6 +1243,7 @@ MonoBehaviour:
   _dialogueDuration: 3
   _elapsedTime: 0
   _dialogue01: {fileID: 11400000, guid: 8cd2359902cd7504d897cb3268260f8f, type: 2}
+  _dialogue02: {fileID: 11400000, guid: 5be8bd65a96742547a68061d0cf05433, type: 2}
 --- !u!1 &1758891925
 GameObject:
   m_ObjectHideFlags: 0
