@@ -26,11 +26,11 @@ public class DialogueView : MonoBehaviour
 
     public void Display(DialogueData data)
     {
-         _dialogueText.text = data.Dialogue;
+        _dialogueText.text = data.Dialogue;
         _characterNameText.text = data.CharacterName;
 
         //For dialogue01
-        if ( _dialogue01._emotion == EmotionType.Normal)
+        if (_dialogue01._emotion == EmotionType.Normal)
         {
             Debug.Log("normal face is being displayed");
             _characterSprite.sprite = _characterSpriteNormal;
@@ -55,7 +55,12 @@ public class DialogueView : MonoBehaviour
             Debug.Log("scared face is being displayed");
             _characterSprite.sprite = _characterSpriteScared;
         }
-        /*
+    }
+    public void Display02(DialogueData data)
+    {
+        _dialogueText.text = data.Dialogue;
+        _characterNameText.text = data.CharacterName;
+
         //For dialogue02
         if (_dialogue02._emotion == EmotionType.Normal)
         {
@@ -83,6 +88,6 @@ public class DialogueView : MonoBehaviour
             Debug.Log("scared face is being displayed");
             _characterSprite.sprite = _characterSpriteScared;
         }
-        */
+        
     }
 }

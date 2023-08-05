@@ -113,7 +113,6 @@ public class DialogueManager : MonoBehaviour
     public IEnumerator Shaking()
     {
         Vector3 startPosition = _dialogueView._dialogueText.transform.position;
-        //float elapsedTime = 0f;
 
         while (_elapsedTime < _dialogueDuration)
         {
@@ -129,8 +128,15 @@ public class DialogueManager : MonoBehaviour
     //dialogue02
     public void StartDialogue02()
     {
-        _dialogueView.Display(_dialogue02);
+        _dialogueView.Display02(_dialogue02);
         StartCoroutine(DisplayDialogue02());
+    }
+
+    public void TextShake02()
+    {
+        //Screen shake code here
+        StartCoroutine(Shaking02());
+
     }
 
     IEnumerator DisplayDialogue02()
@@ -147,9 +153,10 @@ public class DialogueManager : MonoBehaviour
 
         int charIndex = 0;
         charIndex = Mathf.Clamp(charIndex, 0, p.Length);
+
         if (_dialogue02._screenShake == true)
         {
-            TextShake();
+            TextShake02();
         }
 
         if (_dialogue02.DialogueAudio != null)
@@ -171,5 +178,18 @@ public class DialogueManager : MonoBehaviour
         _dialogueView._dialogueText.text = p;
     }
 
+    
+    public IEnumerator Shaking02()
+    {
+        Vector3 startPosition = _dialogueView._dialogueText.transform.position;
+        float elapsedTime = 0f;
 
+        while (elapsedTime < _dialogueDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            _dialogueView._dialogueText.transform.position = startPosition + Random.insideUnitSphere;
+            yield return null;
+        }
+        _dialogueView._dialogueText.transform.position = startPosition;
+    }
 }
