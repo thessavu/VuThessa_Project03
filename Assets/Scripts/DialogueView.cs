@@ -7,21 +7,24 @@ using UnityEngine.UI;
 public class DialogueView : MonoBehaviour
 {
     [Header("Panel Inputs")]
+    [Tooltip("Insert Dialogue_txt (Text Mesh Pro UGUI)")]
     [SerializeField] public TextMeshProUGUI _dialogueText;
+    [Tooltip("Insert Name_txt (Text Mesh Pro UGUI)")]
     [SerializeField] public TextMeshProUGUI _characterNameText;
+    [Tooltip("Insert Portrait_box (Image)")]
     [SerializeField] public Image _characterSprite;
-    
+
     [Header("Emotion Sprites")]
     [SerializeField] public Sprite _characterSpriteNormal;
     [SerializeField] public Sprite _characterSpriteHappy;
     [SerializeField] public Sprite _characterSpriteMad;
     [SerializeField] public Sprite _characterSpriteSad;
     [SerializeField] public Sprite _characterSpriteScared;
-    
-    // public EmotionType _emotionType;
-   // EmotionType _emotionType;
-   [Header("DialogueSO")]
+
+    [Header("DialogueSO")]
+    [Tooltip("Insert DLG_01")]
     [SerializeField] private DialogueData _dialogue01;
+    [Tooltip("Insert DLG_02")]
     [SerializeField] private DialogueData _dialogue02;
 
     public void Display(DialogueData data)

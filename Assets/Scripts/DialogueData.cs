@@ -11,14 +11,13 @@ public class DialogueData : ScriptableObject
     public Sprite _portrait = null;
     [Multiline]
     [SerializeField] private string _dialogue = "...";
+    [Tooltip("Taken from Audio in Prefabs")]
     [SerializeField] private AudioSource _dialogueAudio;
 
     [Header("Options")]
     [SerializeField] public bool _screenShake;
     [SerializeField] public EmotionType _emotion = EmotionType.Normal;
 
-
-    //public List<string> Dialogue => _dialogue;
     public string Dialogue => _dialogue;
     public string CharacterName => _characterName;
     public Sprite Portrait => _portrait;
